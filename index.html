@@ -3,287 +3,232 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MUNICH COMPUTERS - Next Innovative Connect</title>
+  <title>MUNICH COMPUTERS • Next Innovative Connect</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
   <style>
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(25px); }
-      to   { opacity: 1; transform: translateY(0); }
+    @keyframes glow {
+      0%, 100% { text-shadow: 0 0 10px #00f9ff, 0 0 20px #00f9ff; }
+      50%      { text-shadow: 0 0 20px #00f9ff, 0 0 40px #00f9ff; }
     }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50%      { transform: scale(1.08); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50%      { transform: translateY(-12px) rotate(2deg); }
     }
-    @keyframes iconBounce {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-6px); }
-    }
-    body, html {
-      height: 100%;
+    body {
       margin: 0;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(135deg, #f0fdfa 0%, #d1fae5 100%);
-      overflow: hidden;
-    }
-    .full-screen {
       height: 100vh;
-      display: flex;
-      flex-direction: column;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
       overflow: hidden;
+      position: relative;
     }
-    .card {
-      flex: 1;
-      max-width: 1150px;
-      width: 97%;
-      margin: 1rem auto;
-      background: white;
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(0,249,255,0.08) 0%, transparent 50%);
+      pointer-events: none;
+      animation: float 18s infinite ease-in-out;
+    }
+    .glass {
+      background: rgba(30, 41, 59, 0.45);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 249, 255, 0.18);
       border-radius: 1.5rem;
-      box-shadow: 0 20px 50px -15px rgba(16,185,129,0.25), 0 10px 30px rgba(0,0,0,0.1);
-      overflow: hidden;
-      border: 1px solid #a7f3d0;
-      display: flex;
-      flex-direction: column;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.37);
     }
-    .header {
-      background: linear-gradient(90deg, #10b981 0%, #059669 100%);
-      color: white;
-      padding: 1.6rem 2rem;
-      text-align: center;
-      animation: fadeInUp 1.2s ease-out;
+    .neon-text {
+      animation: glow 3s infinite alternate;
+      background: linear-gradient(90deg, #00f9ff, #a855f7, #00f9ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .content {
-      padding: 1.2rem 2rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      overflow-y: auto; /* only if really needed on tiny screens */
+    .service-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: rgba(15, 23, 42, 0.6);
     }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
-      gap: 1rem;
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.06);
+      box-shadow: 0 0 30px rgba(0,249,255,0.35);
+      background: rgba(30, 41, 59, 0.8);
     }
-    .service-item {
-      background: linear-gradient(145deg, #ecfdf5, #d1fae5);
-      border-radius: 1rem;
-      padding: 1.1rem 0.8rem;
-      text-align: center;
-      transition: all 0.35s ease;
-      box-shadow: 0 4px 10px rgba(16,185,129,0.1);
-      animation: fadeInUp 1s ease-out forwards;
-      opacity: 0;
-    }
-    .service-item:nth-child(1) { animation-delay: 0.1s; }
-    .service-item:nth-child(2) { animation-delay: 0.2s; }
-    .service-item:nth-child(3) { animation-delay: 0.3s; }
-    .service-item:nth-child(4) { animation-delay: 0.4s; }
-    .service-item:nth-child(5) { animation-delay: 0.5s; }
-    .service-item:nth-child(6) { animation-delay: 0.6s; }
-    .service-item:nth-child(7) { animation-delay: 0.7s; }
-    .service-item:nth-child(8) { animation-delay: 0.8s; }
-    .service-item:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 15px 30px rgba(16,185,129,0.25);
-    }
-    .service-item i {
-      font-size: 2.4rem;
-      color: #10b981;
-      margin-bottom: 0.5rem;
-      animation: iconBounce 3s infinite ease-in-out;
-    }
-    .form-section, .map-section {
-      animation: fadeInUp 1.4s ease-out;
-    }
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: #10b981;
-      box-shadow: 0 0 0 3px rgba(16,185,129,0.2);
-    }
-    .map-container {
-      height: 160px;
-      border-radius: 1rem;
-      overflow: hidden;
-      border: 1px solid #a7f3d0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    .btn {
-      padding: 0.7rem 1.4rem;
-      font-size: 1rem;
-      border-radius: 0.8rem;
+    .btn-neon {
+      background: linear-gradient(45deg, #00f9ff, #a855f7);
+      border: none;
       transition: all 0.3s;
     }
-    .btn:hover {
-      animation: pulse 1.5s infinite;
+    .btn-neon:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px rgba(168,85,247,0.6);
     }
-    .contact-bar {
-      background: linear-gradient(90deg, #111827, #1f2937);
+    .float-wa {
+      animation: float 4s infinite ease-in-out;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      box-shadow: 0 0 30px rgba(37,213,102,0.5);
+    }
+    input, textarea, select {
+      background: rgba(51,65,85,0.5);
+      border: 1px solid rgba(0,249,255,0.3);
       color: white;
-      padding: 1rem;
-      border-radius: 1rem;
-      font-size: 0.98rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem 2.5rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     }
-    .float-whatsapp {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      background: #25D366;
-      color: white;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.9rem;
-      box-shadow: 0 8px 20px rgba(37,213,102,0.4);
-      z-index: 999;
-      animation: pulse 2.5s infinite;
-      transition: transform 0.3s;
+    input:focus, textarea:focus, select:focus {
+      border-color: #00f9ff;
+      box-shadow: 0 0 15px rgba(0,249,255,0.4);
     }
-    .float-whatsapp:hover { transform: scale(1.15); }
-    @media (max-width: 768px) {
-      .services-grid { gap: 0.8rem; }
-      .form-grid { grid-template-columns: 1fr; gap: 0.8rem; }
-      .contact-bar { gap: 1rem; flex-direction: column; align-items: center; }
-      .content { padding: 1rem 1.2rem; }
+    .map-frame {
+      filter: grayscale(30%) brightness(1.1) contrast(1.15);
     }
   </style>
 </head>
-<body>
+<body class="flex items-center justify-center p-4">
 
-<div class="full-screen">
-
-  <div class="card">
+  <div class="glass w-full max-w-6xl h-[95vh] overflow-hidden flex flex-col">
 
     <!-- Header -->
-    <div class="header">
-      <div class="flex justify-center items-center gap-4 mb-3 flex-wrap">
-        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-lg">
-          <span class="text-emerald-700 text-4xl font-black">M</span>
-        </div>
+    <header class="p-6 text-center border-b border-cyan-500/20">
+      <h1 class="text-5xl md:text-6xl font-black tracking-tighter neon-text mb-2">
+        MUNICH COMPUTERS
+      </h1>
+      <p class="text-2xl md:text-3xl font-medium opacity-90 mb-3">Next Innovative Connect</p>
+      
+      <div class="flex flex-wrap justify-center gap-6 text-lg">
         <div>
-          <h1 class="text-4xl md:text-5xl font-bold tracking-tight">MUNICH COMPUTERS</h1>
-          <p class="text-xl md:text-2xl mt-1 opacity-90">Next Innovative Connect</p>
+          <span class="font-bold">M. SURAA</span> 
+          <span class="opacity-80">BBA., DCTN.</span>
         </div>
+        <div class="font-semibold">Managing Director</div>
       </div>
-      <p class="text-2xl font-semibold mt-2">M. SURAA <span class="text-lg opacity-90">BBA., DCTN.</span></p>
-      <p class="text-lg mt-1">Managing Director</p>
-      <div class="mt-4 text-base opacity-90 flex justify-center gap-8 flex-wrap">
+
+      <div class="mt-4 text-sm flex justify-center gap-8 opacity-80 flex-wrap">
         <span>GSTIN: 33CYPPS1268F2Z3</span>
         <span class="italic">"God is, 'My Parents'"</span>
       </div>
-    </div>
+    </header>
 
-    <!-- Content -->
-    <div class="content">
+    <!-- Main Grid -->
+    <div class="flex-1 grid md:grid-cols-2 gap-6 p-6 overflow-y-auto">
 
-      <!-- Services -->
-      <div class="text-center">
-        <h2 class="text-3xl font-bold text-emerald-700 mb-4">Our Expertise</h2>
-        <div class="services-grid">
-          <div class="service-item"><i class="fas fa-laptop"></i><div>Laptop</div></div>
-          <div class="service-item"><i class="fas fa-desktop"></i><div>Desktop</div></div>
-          <div class="service-item"><i class="fas fa-network-wired"></i><div>Networking</div></div>
-          <div class="service-item"><i class="fas fa-camera"></i><div>CCTV Camera</div></div>
-          <div class="service-item"><i class="fas fa-chalkboard-teacher"></i><div>Hardware Trainer</div></div>
-          <div class="service-item"><i class="fas fa-print"></i><div>Printer</div></div>
-          <div class="service-item"><i class="fas fa-file-invoice-dollar"></i><div>Billing Softwares</div></div>
-          <div class="service-item"><i class="fas fa-globe"></i><div>e - Sevai</div></div>
-        </div>
-      </div>
+      <!-- Left: Services + Form -->
+      <div class="space-y-6">
 
-      <!-- Form + Map -->
-      <div class="grid md:grid-cols-2 gap-6">
-
-        <!-- Form -->
-        <div class="form-section">
-          <h3 class="text-2xl font-semibold text-gray-800 mb-3">Quick Enquiry</h3>
-          <form id="quick-form" class="space-y-3">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 form-grid">
-              <input type="text" placeholder="Your Name" required class="w-full p-3 rounded-lg border border-gray-300">
-              <input type="tel" placeholder="Phone Number" required class="w-full p-3 rounded-lg border border-gray-300">
+        <div>
+          <h2 class="text-3xl font-bold mb-4 neon-text text-center md:text-left">Our Expertise</h2>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="service-card p-4 text-center rounded-xl">
+              <i class="fas fa-laptop text-4xl text-cyan-400 mb-2"></i>
+              <p>Laptop</p>
             </div>
-            <input type="email" placeholder="Email (optional)" class="w-full p-3 rounded-lg border border-gray-300">
-            <select class="w-full p-3 rounded-lg border border-gray-300">
-              <option>Choose Service</option>
-              <option>Laptop / Desktop</option>
+            <div class="service-card p-4 text-center rounded-xl">
+              <i class="fas fa-desktop text-4xl text-cyan-400 mb-2"></i>
+              <p>Desktop</p>
+            </div>
+            <div class="service-card p-4 text-center rounded-xl">
+              <i class="fas fa-network-wired text-4xl text-cyan-400 mb-2"></i>
+              <p>Networking</p>
+            </div>
+            <div class="service-card p-4 text-center rounded-xl">
+              <i class="fas fa-camera text-4xl text-cyan-400 mb-2"></i>
+              <p>CCTV</p>
+            </div>
+            <div class="service-card p-4 text-center rounded-xl">
+              <i class="fas fa-chalkboard-teacher text-4xl text-cyan-400 mb-2"></i>
+              <p>Hardware Training</p>
+            </div>
+            <div class="service-card p-4 text-center rounded-xl">
+              <i class="fas fa-print text-4xl text-cyan-400 mb-2"></i>
+              <p>Printer</p>
+            </div>
+            <div class="service-card p-4 text-center rounded-xl">
+              <i class="fas fa-file-invoice-dollar text-4xl text-cyan-400 mb-2"></i>
+              <p>Billing Software</p>
+            </div>
+            <div class="service-card p-4 text-center rounded-xl">
+              <i class="fas fa-globe text-4xl text-cyan-400 mb-2"></i>
+              <p>e-Sevai</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-2xl font-bold mb-3 neon-text">Quick Enquiry</h3>
+          <form id="enq-form" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input type="text" placeholder="Name" required class="p-3 rounded-lg w-full">
+              <input type="tel" placeholder="Phone" required class="p-3 rounded-lg w-full">
+            </div>
+            <input type="email" placeholder="Email (optional)" class="p-3 rounded-lg w-full">
+            <select class="p-3 rounded-lg w-full">
+              <option>Interested Service</option>
+              <option>Laptop/Desktop Repair</option>
               <option>CCTV Installation</option>
-              <option>Networking</option>
+              <option>Networking Setup</option>
               <option>Billing Software</option>
-              <option>e-Sevai</option>
+              <option>e-Sevai Services</option>
               <option>Hardware Training</option>
-              <option>Printer Service</option>
             </select>
-            <textarea placeholder="Tell us your requirement..." rows="2" class="w-full p-3 rounded-lg border border-gray-300"></textarea>
-            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white btn font-semibold shadow-md">
-              Send Message →
+            <textarea placeholder="Your Message..." rows="2" class="p-3 rounded-lg w-full"></textarea>
+            <button type="submit" class="btn-neon text-white font-bold py-3 px-6 rounded-lg w-full">
+              SEND → 
             </button>
           </form>
         </div>
 
-        <!-- Map + Address -->
-        <div class="map-section">
-          <h3 class="text-2xl font-semibold text-gray-800 mb-3">Find Us Here</h3>
-          <div class="map-container">
-            <iframe 
-              width="100%" height="100%" frameborder="0" style="border:0;"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.8!2d78.093!3d9.509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06a4e000000001%3A0x0!2sAruppukottai%2C+Tamil+Nadu+626101!5e0!3m2!1sen!2sin!4v1740000000000!5m2!1sen!2sin" 
+      </div>
+
+      <!-- Right: Map + Contacts -->
+      <div class="space-y-6 flex flex-col">
+
+        <div class="flex-1">
+          <h3 class="text-2xl font-bold mb-3 neon-text">Our Location</h3>
+          <div class="glass overflow-hidden h-64 rounded-2xl">
+            <iframe class="map-frame w-full h-full"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.8!2d78.093!3d9.509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06a4e000000001%3A0x0!2sAruppukottai%2C+Tamil+Nadu+626101!5e0!3m2!1sen!2sin!4v1740000000000"
               allowfullscreen="" loading="lazy">
             </iframe>
           </div>
-          <p class="text-base text-gray-700 mt-3 text-center">
-            No. 302, KM Complex, Pandalkudi Main Road,<br>
-            ARUPPUKOTTAI - 626 101
+          <p class="mt-3 text-center opacity-90">
+            No. 302, KM Complex, Pandalkudi Main Road,<br>ARUPPUKOTTAI - 626 101
           </p>
         </div>
 
-      </div>
+        <div class="glass p-5">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center text-sm">
+            <div>
+              <i class="fas fa-phone-volume text-cyan-400 text-2xl mb-2"></i><br>
+              <small>Support</small><br>
+              <a href="tel:9894687438" class="hover:text-cyan-300">98946 87438</a>
+            </div>
+            <div>
+              <i class="fas fa-phone-volume text-cyan-400 text-2xl mb-2"></i><br>
+              <small>Sales</small><br>
+              <a href="tel:9788677438" class="hover:text-cyan-300">97886 77438</a>
+            </div>
+            <div>
+              <i class="fas fa-envelope text-cyan-400 text-2xl mb-2"></i><br>
+              <a href="mailto:munichcompu@gmail.com" class="hover:text-cyan-300 break-all">munichcompu@gmail.com</a>
+            </div>
+          </div>
+        </div>
 
-      <!-- Contact Bar -->
-      <div class="contact-bar">
-        <div class="flex items-center gap-3">
-          <i class="fas fa-phone-volume text-emerald-400 text-xl"></i>
-          <div>
-            <small class="opacity-70">Support</small><br>
-            <a href="tel:9894687438" class="hover:text-emerald-300">98946 87438</a>
-          </div>
-        </div>
-        <div class="flex items-center gap-3">
-          <i class="fas fa-phone-volume text-emerald-400 text-xl"></i>
-          <div>
-            <small class="opacity-70">Sales</small><br>
-            <a href="tel:9788677438" class="hover:text-emerald-300">97886 77438</a>
-          </div>
-        </div>
-        <div class="flex items-center gap-3">
-          <i class="fas fa-envelope text-emerald-400 text-xl"></i>
-          <a href="mailto:munichcompu@gmail.com" class="hover:text-emerald-300">munichcompu@gmail.com</a>
-        </div>
       </div>
 
     </div>
 
   </div>
 
-</div>
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/919894687438" target="_blank" 
+     class="fixed bottom-6 right-6 float-wa w-16 h-16 rounded-full flex items-center justify-center text-white text-3xl shadow-2xl z-50">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/919894687438" target="_blank" class="float-whatsapp">
-  <i class="fab fa-whatsapp"></i>
-</a>
-
-<script>
-  document.getElementById('quick-form')?.addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Thanks bro! Message sent — we will reach you soon on WhatsApp / call.');
-  });
-</script>
+  <script>
+    document.getElementById('enq-form')?.addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Message sent! We will connect with you shortly 🔥');
+    });
+  </script>
 </body>
 </html>
