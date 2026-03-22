@@ -3,215 +3,224 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MUNICH COMPUTERS • Next Innovative Connect</title>
+  <title>Munich Computers - Reliable Tech Solutions</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
   <style>
-    @keyframes glow {
-      0%, 100% { text-shadow: 0 0 10px #00f9ff, 0 0 20px #00f9ff; }
-      50%      { text-shadow: 0 0 20px #00f9ff, 0 0 40px #00f9ff; }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50%      { transform: translateY(-12px) rotate(2deg); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     body {
       margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: #e2e8f0;
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #f8fafc, #e0f2fe);
       font-family: 'Segoe UI', system-ui, sans-serif;
-      overflow: hidden;
-      position: relative;
+      color: #1e293b;
     }
-    body::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(0,249,255,0.08) 0%, transparent 50%);
-      pointer-events: none;
-      animation: float 18s infinite ease-in-out;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem;
     }
-    .glass {
-      background: rgba(30, 41, 59, 0.45);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(0, 249, 255, 0.18);
+    .hero {
+      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+      color: white;
       border-radius: 1.5rem;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.37);
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(59,130,246,0.3);
     }
-    .neon-text {
-      animation: glow 3s infinite alternate;
-      background: linear-gradient(90deg, #00f9ff, #a855f7, #00f9ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .section {
+      background: white;
+      border-radius: 1.25rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
     }
-    .service-card {
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      background: rgba(15, 23, 42, 0.6);
+    .section:hover {
+      transform: translateY(-5px);
     }
-    .service-card:hover {
-      transform: translateY(-10px) scale(1.06);
-      box-shadow: 0 0 30px rgba(0,249,255,0.35);
-      background: rgba(30, 41, 59, 0.8);
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.25rem;
     }
-    .btn-neon {
-      background: linear-gradient(45deg, #00f9ff, #a855f7);
-      border: none;
+    .expertise-item {
+      text-align: center;
+      padding: 1.25rem;
+      background: #eff6ff;
+      border-radius: 1rem;
       transition: all 0.3s;
     }
-    .btn-neon:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 25px rgba(168,85,247,0.6);
+    .expertise-item:hover {
+      background: #dbeafe;
+      transform: scale(1.05);
+    }
+    .vm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .vm-grid { grid-template-columns: 1fr; }
+    }
+    .btn-primary {
+      background: #1d4ed8;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s;
+    }
+    .btn-primary:hover {
+      background: #1e40af;
+      transform: translateY(-2px);
     }
     .float-wa {
-      animation: float 4s infinite ease-in-out;
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      box-shadow: 0 0 30px rgba(37,213,102,0.5);
-    }
-    input, textarea, select {
-      background: rgba(51,65,85,0.5);
-      border: 1px solid rgba(0,249,255,0.3);
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: #25D366;
       color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 6px 20px rgba(37,213,102,0.4);
+      z-index: 100;
+      transition: transform 0.3s;
     }
-    input:focus, textarea:focus, select:focus {
-      border-color: #00f9ff;
-      box-shadow: 0 0 15px rgba(0,249,255,0.4);
+    .float-wa:hover { transform: scale(1.12); }
+    input, select, textarea {
+      border: 1px solid #bfdbfe;
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      width: 100%;
     }
-    .map-frame {
-      filter: grayscale(30%) brightness(1.1) contrast(1.15);
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
     }
   </style>
 </head>
-<body class="flex items-center justify-center p-4">
+<body class="flex flex-col min-h-screen">
 
-  <div class="glass w-full max-w-6xl h-[95vh] overflow-hidden flex flex-col">
+  <!-- Hero / Header -->
+  <div class="hero animate-fadeIn">
+    <h1 class="text-5xl md:text-6xl font-bold mb-3">MUNICH COMPUTERS</h1>
+    <p class="text-2xl md:text-3xl mb-6 opacity-90">Next Innovative Connect • Service & Sales</p>
+    
+    <div class="flex flex-wrap justify-center gap-8 text-xl">
+      <div>M. SURAA <span class="opacity-90 text-lg">BBA., DCTN.</span></div>
+      <div class="font-semibold">Managing Director</div>
+    </div>
 
-    <!-- Header -->
-    <header class="p-6 text-center border-b border-cyan-500/20">
-      <h1 class="text-5xl md:text-6xl font-black tracking-tighter neon-text mb-2">
-        MUNICH COMPUTERS
-      </h1>
-      <p class="text-2xl md:text-3xl font-medium opacity-90 mb-3">Next Innovative Connect</p>
-      
-      <div class="flex flex-wrap justify-center gap-6 text-lg">
-        <div>
-          <span class="font-bold">M. SURAA</span> 
-          <span class="opacity-80">BBA., DCTN.</span>
-        </div>
-        <div class="font-semibold">Managing Director</div>
+    <div class="mt-6 flex flex-wrap justify-center gap-6 text-base opacity-90">
+      <span>GSTIN: 33CYPPS1268F2Z3</span>
+      <span class="italic">"God is, 'My Parents'"</span>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Vision & Mission -->
+    <div class="vm-grid mb-8">
+      <div class="section">
+        <h2 class="text-3xl font-bold text-blue-700 mb-4 text-center">Our Vision</h2>
+        <p class="text-lg leading-relaxed text-center">
+          To become the most trusted and preferred technology partner in Aruppukottai and surrounding areas, delivering innovative, reliable, and affordable IT solutions that empower businesses and individuals to thrive in the digital world.
+        </p>
+      </div>
+      <div class="section">
+        <h2 class="text-3xl font-bold text-blue-700 mb-4 text-center">Our Mission</h2>
+        <p class="text-lg leading-relaxed text-center">
+          To provide high-quality computer sales, repair, networking, CCTV installation, billing software, e-Sevai services, and hardware training with exceptional customer care, timely support, and continuous innovation — building long-term relationships based on trust, transparency, and complete satisfaction.
+        </p>
+      </div>
+    </div>
+
+    <!-- Expertise -->
+    <div class="section">
+      <h2 class="text-3xl font-bold text-center mb-6 text-blue-800">Our Expertise</h2>
+      <div class="expertise-grid">
+        <div class="expertise-item"><i class="fas fa-laptop text-4xl text-blue-600 mb-3"></i><p class="font-medium">Laptop</p></div>
+        <div class="expertise-item"><i class="fas fa-desktop text-4xl text-blue-600 mb-3"></i><p class="font-medium">Desktop</p></div>
+        <div class="expertise-item"><i class="fas fa-network-wired text-4xl text-blue-600 mb-3"></i><p class="font-medium">Networking</p></div>
+        <div class="expertise-item"><i class="fas fa-camera text-4xl text-blue-600 mb-3"></i><p class="font-medium">CCTV Camera</p></div>
+        <div class="expertise-item"><i class="fas fa-chalkboard-teacher text-4xl text-blue-600 mb-3"></i><p class="font-medium">Hardware Trainer</p></div>
+        <div class="expertise-item"><i class="fas fa-print text-4xl text-blue-600 mb-3"></i><p class="font-medium">Printer</p></div>
+        <div class="expertise-item"><i class="fas fa-file-invoice-dollar text-4xl text-blue-600 mb-3"></i><p class="font-medium">Billing Softwares</p></div>
+        <div class="expertise-item"><i class="fas fa-globe text-4xl text-blue-600 mb-3"></i><p class="font-medium">e - Sevai</p></div>
+      </div>
+    </div>
+
+    <!-- Contact & Form & Map -->
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <!-- Enquiry Form -->
+      <div class="section">
+        <h2 class="text-3xl font-bold mb-6 text-center text-blue-800">Quick Enquiry</h2>
+        <form id="contact-form" class="space-y-4">
+          <input type="text" placeholder="Your Name" required>
+          <input type="tel" placeholder="Phone Number" required>
+          <input type="email" placeholder="Email (optional)">
+          <select>
+            <option>Service Interested In</option>
+            <option>Laptop / Desktop</option>
+            <option>CCTV Camera</option>
+            <option>Networking</option>
+            <option>Billing Softwares</option>
+            <option>e-Sevai</option>
+            <option>Hardware Training</option>
+            <option>Printer Service</option>
+          </select>
+          <textarea placeholder="Your Requirement / Message..." rows="3"></textarea>
+          <button type="submit" class="btn-primary w-full font-semibold text-lg">Send Message</button>
+        </form>
       </div>
 
-      <div class="mt-4 text-sm flex justify-center gap-8 opacity-80 flex-wrap">
-        <span>GSTIN: 33CYPPS1268F2Z3</span>
-        <span class="italic">"God is, 'My Parents'"</span>
-      </div>
-    </header>
-
-    <!-- Main Grid -->
-    <div class="flex-1 grid md:grid-cols-2 gap-6 p-6 overflow-y-auto">
-
-      <!-- Left: Services + Form -->
-      <div class="space-y-6">
-
-        <div>
-          <h2 class="text-3xl font-bold mb-4 neon-text text-center md:text-left">Our Expertise</h2>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div class="service-card p-4 text-center rounded-xl">
-              <i class="fas fa-laptop text-4xl text-cyan-400 mb-2"></i>
-              <p>Laptop</p>
-            </div>
-            <div class="service-card p-4 text-center rounded-xl">
-              <i class="fas fa-desktop text-4xl text-cyan-400 mb-2"></i>
-              <p>Desktop</p>
-            </div>
-            <div class="service-card p-4 text-center rounded-xl">
-              <i class="fas fa-network-wired text-4xl text-cyan-400 mb-2"></i>
-              <p>Networking</p>
-            </div>
-            <div class="service-card p-4 text-center rounded-xl">
-              <i class="fas fa-camera text-4xl text-cyan-400 mb-2"></i>
-              <p>CCTV</p>
-            </div>
-            <div class="service-card p-4 text-center rounded-xl">
-              <i class="fas fa-chalkboard-teacher text-4xl text-cyan-400 mb-2"></i>
-              <p>Hardware Training</p>
-            </div>
-            <div class="service-card p-4 text-center rounded-xl">
-              <i class="fas fa-print text-4xl text-cyan-400 mb-2"></i>
-              <p>Printer</p>
-            </div>
-            <div class="service-card p-4 text-center rounded-xl">
-              <i class="fas fa-file-invoice-dollar text-4xl text-cyan-400 mb-2"></i>
-              <p>Billing Software</p>
-            </div>
-            <div class="service-card p-4 text-center rounded-xl">
-              <i class="fas fa-globe text-4xl text-cyan-400 mb-2"></i>
-              <p>e-Sevai</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h3 class="text-2xl font-bold mb-3 neon-text">Quick Enquiry</h3>
-          <form id="enq-form" class="space-y-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input type="text" placeholder="Name" required class="p-3 rounded-lg w-full">
-              <input type="tel" placeholder="Phone" required class="p-3 rounded-lg w-full">
-            </div>
-            <input type="email" placeholder="Email (optional)" class="p-3 rounded-lg w-full">
-            <select class="p-3 rounded-lg w-full">
-              <option>Interested Service</option>
-              <option>Laptop/Desktop Repair</option>
-              <option>CCTV Installation</option>
-              <option>Networking Setup</option>
-              <option>Billing Software</option>
-              <option>e-Sevai Services</option>
-              <option>Hardware Training</option>
-            </select>
-            <textarea placeholder="Your Message..." rows="2" class="p-3 rounded-lg w-full"></textarea>
-            <button type="submit" class="btn-neon text-white font-bold py-3 px-6 rounded-lg w-full">
-              SEND → 
-            </button>
-          </form>
-        </div>
-
-      </div>
-
-      <!-- Right: Map + Contacts -->
-      <div class="space-y-6 flex flex-col">
-
-        <div class="flex-1">
-          <h3 class="text-2xl font-bold mb-3 neon-text">Our Location</h3>
-          <div class="glass overflow-hidden h-64 rounded-2xl">
-            <iframe class="map-frame w-full h-full"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.8!2d78.093!3d9.509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06a4e000000001%3A0x0!2sAruppukottai%2C+Tamil+Nadu+626101!5e0!3m2!1sen!2sin!4v1740000000000"
-              allowfullscreen="" loading="lazy">
+      <!-- Location & Contacts -->
+      <div class="section flex flex-col">
+        <h2 class="text-3xl font-bold mb-6 text-center text-blue-800">Reach Us</h2>
+        
+        <div class="flex-1 mb-6">
+          <div class="overflow-hidden rounded-xl border border-blue-200 shadow-sm h-56">
+            <iframe 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              loading="lazy" 
+              allowfullscreen 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.8!2d78.093!3d9.509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06a4e000000001%3A0x0!2sAruppukottai%2C+Tamil+Nadu+626101!5e0!3m2!1sen!2sin!4v1740000000000">
             </iframe>
           </div>
-          <p class="mt-3 text-center opacity-90">
-            No. 302, KM Complex, Pandalkudi Main Road,<br>ARUPPUKOTTAI - 626 101
+          <p class="mt-4 text-center text-lg">
+            No. 302, KM Complex,<br>Pandalkudi Main Road,<br>ARUPPUKOTTAI - 626 101
           </p>
         </div>
 
-        <div class="glass p-5">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center text-sm">
-            <div>
-              <i class="fas fa-phone-volume text-cyan-400 text-2xl mb-2"></i><br>
-              <small>Support</small><br>
-              <a href="tel:9894687438" class="hover:text-cyan-300">98946 87438</a>
-            </div>
-            <div>
-              <i class="fas fa-phone-volume text-cyan-400 text-2xl mb-2"></i><br>
-              <small>Sales</small><br>
-              <a href="tel:9788677438" class="hover:text-cyan-300">97886 77438</a>
-            </div>
-            <div>
-              <i class="fas fa-envelope text-cyan-400 text-2xl mb-2"></i><br>
-              <a href="mailto:munichcompu@gmail.com" class="hover:text-cyan-300 break-all">munichcompu@gmail.com</a>
-            </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <div>
+            <i class="fas fa-phone-volume text-3xl text-blue-600 mb-2"></i><br>
+            <small class="block text-sm opacity-70">Support</small>
+            <a href="tel:9894687438" class="font-medium">98946 87438</a>
+          </div>
+          <div>
+            <i class="fas fa-phone-volume text-3xl text-blue-600 mb-2"></i><br>
+            <small class="block text-sm opacity-70">Sales</small>
+            <a href="tel:9788677438" class="font-medium">97886 77438</a>
+          </div>
+          <div>
+            <i class="fas fa-envelope text-3xl text-blue-600 mb-2"></i><br>
+            <a href="mailto:munichcompu@gmail.com" class="font-medium break-all">munichcompu@gmail.com</a>
           </div>
         </div>
-
       </div>
 
     </div>
@@ -219,15 +228,19 @@
   </div>
 
   <!-- Floating WhatsApp -->
-  <a href="https://wa.me/919894687438" target="_blank" 
-     class="fixed bottom-6 right-6 float-wa w-16 h-16 rounded-full flex items-center justify-center text-white text-3xl shadow-2xl z-50">
+  <a href="https://wa.me/919894687438" target="_blank" class="float-wa">
     <i class="fab fa-whatsapp"></i>
   </a>
 
   <script>
-    document.getElementById('enq-form')?.addEventListener('submit', e => {
+    document.getElementById('contact-form')?.addEventListener('submit', e => {
       e.preventDefault();
-      alert('Message sent! We will connect with you shortly 🔥');
+      alert('Thank you! Your enquiry has been sent. We will contact you soon.');
+    });
+    // Simple animation trigger
+    document.querySelectorAll('.section').forEach((el, i) => {
+      el.style.animation = `fadeIn 0.8s ease-out ${i * 0.15}s forwards`;
+      el.style.opacity = '0';
     });
   </script>
 </body>
